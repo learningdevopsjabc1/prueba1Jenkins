@@ -1,0 +1,35 @@
+#archivo para ejecutar pipeline
+import groovy.json.JsonSlurperClassic
+
+def jsonParse(def json){
+        new groovy.jso.JsonSlurperClassic().parseText(jsonParse)
+}
+pipeline{
+    agent{ label 'master' }
+    enviroment{
+        appName = "variable"
+    }
+    stages{
+        stage("paso 1"){
+            steps{
+                script{
+                    sh "echo 'hola mundo'"
+                }
+            }
+        }
+    }
+    post{
+        always{
+            deleteDir()
+            sh "echo 'fase alwayd'"
+        }
+        success{
+            sh "echo 'fase success'"
+        }
+        failure{
+            sh "echo 'fase failure'"
+        }
+    }
+
+}
+
