@@ -5,7 +5,7 @@ def jsonParse(def json){
 }
 pipeline{
     agent{ label 'master' }
-    enviroment{
+    environment{
         appName = "variable"
     }
     stages{
@@ -20,7 +20,7 @@ pipeline{
     post{
         always{
             deleteDir()
-            sh "echo 'fase alwayd'"
+            sh "echo 'fase always'"
         }
         success{
             sh "echo 'fase success'"
@@ -31,4 +31,3 @@ pipeline{
     }
 
 }
-
